@@ -27,6 +27,13 @@ const autoplay = {
     autoplayDirection: {
       type: String,
       default: "forward"
+    },
+    /**
+     * Autoplay Infinite. User can have the carousel stop at the last frame if set to false
+     */
+    autoplayInfinite: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -59,7 +66,11 @@ const autoplay = {
       this.startAutoplay();
     },
     autoplayAdvancePage() {
-      this.advancePage(this.autoplayDirection);
+      if (this.currentPage >= this.pageCount - 1 && this.autoplayInfinite) {
+        this.goToPage(0);
+      } else if (this.currentPage <= this.pageCount - 1) {
+        this.advancePage(this.autoplayDirection);
+      }
     }
   },
   mounted() {

@@ -87,9 +87,13 @@ play("Carousel", module)
     }
   })
   .add("Autoplay", h => createContainer(
-      h, containerWidth, [h(Carousel, { props: { autoplay: true, autoplayHoverPause: false } }, generateSlideImages(h))]
-    )
+    h, containerWidth, [h(Carousel, { props: { autoplay: true, autoplayHoverPause: false } }, generateSlideImages(h))]
   )
+)
+.add("Autoplay No Infinite", h => createContainer(
+  h, containerWidth, [h(Carousel, { props: { autoplay: true, autoplayHoverPause: false, autoplayInfinite:false } }, generateSlideImages(h))]
+)
+)
   .add("Autoplay, pause on hover", h => createContainer(
       h, containerWidth, [h(Carousel, { props: { autoplay: true, autoplayHoverPause: true } }, generateSlideImages(h))]
     )
